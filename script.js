@@ -24,7 +24,7 @@ class Recipe {
             const rawData = await response.json();
 
             const recipeList = rawData.recipes.map(data => new Recipe(data.name, data.difficulty, data.prepTimeMinutes));
-            const quickMeals = recipeList.filter(recipe => recipe.prepTime > 20);
+            const quickMeals = recipeList.filter(recipe => recipe.prepTime < 20);
 
             containerDiv.innerHTML = '';
 

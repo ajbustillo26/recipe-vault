@@ -1,16 +1,20 @@
 class Recipe {
-    constructor(name, instructions) {
+    constructor(name, difficulty, prepTime) {
         this.name = name;
-        this.instructions = instructions;
+        this.difficulty = difficulty;
+        this.prepTime = prepTime;
     }
     getHtml() {
         return `<div class="recipe-card">
             <h3 id="recipe-title">${this.name}</h3>
-            <p class = "instructions><strong>Instructions:</strong> ${this.instructions}"</p>
-            </div>`
+            <p class = "instructions">
+            <strong>Difficulty:</strong> ${this.difficulty}<br>
+            <strong>Prep Time:</strong> ${this.prepTime} Minutes
+            </p>
+            </div>`;
     }
 
-    async addRecipe(name, instructions) {
+    async loadRecipes() {
         const containerDiv = document.getElementById('recipe-container');
 
         try {
@@ -18,9 +22,11 @@ class Recipe {
             const rawData = await response.json();
 
             const recipeList = rawData.recipes.map(data => new Recipe(data.name, data.difficulty, data.prepTimeMinutes));
-            const quickMeals = repcipeList.filter(recipe => recipe.prepTime < 20);
+            const quickMeals = recipeList.filter(recipe => recipe.prepTime < 20);
+            
+            containerDiv.innerHTML = '';
 
-            quickMeals.forEach( recipe => {
+            quickMeals.forEach(recipe => {
                 containerDiv.innerHTML += recipe.getHtml();
             });
         } catch (error) {

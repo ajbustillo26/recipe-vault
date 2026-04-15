@@ -4,6 +4,7 @@ class Recipe {
         this.difficulty = difficulty;
         this.prepTime = prepTime;
     }
+
     getHtml() {
         return `<div class="recipe-card">
             <h3 id="recipe-title">${this.name}</h3>
@@ -13,26 +14,28 @@ class Recipe {
             </p>
             </div>`;
     }
+}
 
-    async loadRecipes() {
-        const containerDiv = document.getElementById('recipe-container');
+    async function loadRecipe() {
+        const containerDiv = document.querySelector('.recipe-container');
 
         try {
-            const response = await fetch('https://dummyjson.com/recipes');
-            const rawData = await response.json();
+            const response = await fetch('https://jsonplaceholder.typicode.com/recipes');
+            const rawData = response.json();
 
-            const recipeList = rawData.recipes.map(data => new Recipe(data.name, data.difficulty, data.prepTimeMinutes));
-            const quickMeals = recipeList.filter(recipe => recipe.prepTime < 20);
-            
+            const recipeList = rawData.recipes.map(data => new Recipe(data.name, data.difficulty, data.prepTime));
+            const quickMeals = recipeList.filter(recipe => recipe.prepTime > 20);
+
             containerDiv.innerHTML = '';
 
-            quickMeals.forEach(recipe => {
+            quickMeals.forEach(quickMeal => {
                 containerDiv.innerHTML += recipe.getHtml();
             });
+
         } catch (error) {
-            containerDiv.innerHTML = "Could not find a recipe";
+            containerDiv.innerHTML = "could not find recipe";
             console.error(error);
         }
     }
-}
-loadRecipes();
+    loadRecipe();
+

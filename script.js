@@ -6,7 +6,7 @@ class Recipe {
     }
 
     getHtml() {
-        const badge = this.prepTime < 20 ? "⚡ Quick Meal" : "🕰️ Takes a while";
+        const badge = this.prepTime < 20 ? "quick meal" : "need a bit more love!";
 
         return `<div class="recipe-card">
             <h3 class="recipe-title">${this.name}</h3>

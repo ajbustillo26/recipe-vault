@@ -2,48 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Recipe cards</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Box </title>
   <style>
-    body{
-      font-family: 'Georgia', serif;
-      background-color: #faf8f5;
-      color: #333;
-      padding: 20px;
-    }
-    h1 {
-      border-bottom: 2px solid lightyellow;
-      padding-bottom: 10px;
-      color: lightcoral;
-    }
-       #recipe-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 10px;
-        justify-content: center;
-    }
-
-    .recipe-card {
-      background-color: whitesmoke;
-      border-top: 4px solid lightcoral;
-      padding: 16px;
-      margin-bottom: 10px;
-      border-radius: 7px;
-      box-shadow: 2px 2px 2px #ddd;
-    }
-    .recipe-title {
-      text-transform: capitalize; color: lightlategray;
-    }
-    .instructions {
-      color: lightcoral; line-height: 1.5;
-    }
+    body { font-family: 'Georgia', serif; background-color: #faf8f5; color: #333; padding: 20px; }
+    h1 { border-bottom: 2px solid lightyellow; padding-bottom: 10px; color: lightcoral; }
+    button { background-color: lightcoral; color: white; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer; border-radius: 5px; margin-bottom: 20px; }
+    button:hover { background-color: #e06666; }
+    
+    #recipe-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; justify-content: center; }
+    .recipe-card { background-color: whitesmoke; border-top: 4px solid lightcoral; padding: 16px; border-radius: 7px; box-shadow: 2px 2px 2px #ddd; }
+    .recipe-title { text-transform: capitalize; color: lightcoral; }
+    .instructions { color: #555; line-height: 1.5; }
+    .badge { font-weight: bold; color: #d35400; display: block; margin-top: 10px; }
   </style>
 </head>
 <body>
-<h1>Digital Recipe Box</h1>
-<script type="module" src="script.js"></script>
-<div id="recipe-container"> retriving grandma's recipes...</div>
+    <h1>Digital Recipe Box 2.0</h1>
+    <button id="load-btn">Load Recipes</button>
+    
+    <div id="recipe-container">The pantry is closed. Click the button to open!</div>
+
+    <script type="module" src="script.js"></script>
 </body>
 </html>

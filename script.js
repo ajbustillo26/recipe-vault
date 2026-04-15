@@ -20,10 +20,10 @@ class Recipe {
         const containerDiv = document.querySelector('.recipe-container');
 
         try {
-            const response = await fetch('https://jsonplaceholder.typicode.com/recipes');
-            const rawData = response.json();
+            const response = await fetch('https://dummyjson.com/recipes');
+            const rawData = await response.json();
 
-            const recipeList = rawData.recipes.map(data => new Recipe(data.name, data.difficulty, data.prepTime));
+            const recipeList = rawData.recipes.map(data => new Recipe(data.name, data.difficulty, data.prepTimeMinutes));
             const quickMeals = recipeList.filter(recipe => recipe.prepTime > 20);
 
             containerDiv.innerHTML = '';

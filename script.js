@@ -28,7 +28,7 @@ class Recipe {
 
             containerDiv.innerHTML = '';
 
-            quickMeals.forEach(quickMeal => {
+            quickMeals.forEach(recipe => {
                 containerDiv.innerHTML += recipe.getHtml();
             });
 

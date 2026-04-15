@@ -17,7 +17,7 @@ class Recipe {
 }
 
     async function loadRecipe() {
-        const containerDiv = document.document.getElementById('recipe-container');
+        const containerDiv = document.getElementById('recipe-container');
 
         try {
             const response = await fetch('https://dummyjson.com/recipes');
